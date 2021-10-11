@@ -145,7 +145,7 @@ const SignupSchema = Yup.object().shape({
     .required('Обязательное поле')
 })
 
-const AddPost = () => {
+const AddPost = (): JSX.Element => {
 
   const router = useRouter()
 
@@ -215,8 +215,7 @@ const AddPost = () => {
                   <Label htmlFor={'text'}>
                     Текст статьи:
                   </Label>
-                  <Textarea type={'text'}
-                            name={'text'}
+                  <Textarea name={'text'}
                             onChange={handleChange}
                             onBlur={handleBlur}
                             value={values.text}

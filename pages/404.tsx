@@ -60,7 +60,7 @@ const ImageWrapper = styled.div`
   }
 `
 
-const PageNotFound = () => (
+const PageNotFound = (): JSX.Element => (
   <Wrapper>
     <Head>
       <title>

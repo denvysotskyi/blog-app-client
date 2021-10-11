@@ -77,7 +77,11 @@ const Post = styled.a`
     width: 320px;
   }
 `
-const PostImage = styled.div`
+
+interface IPostImage{
+  image: string
+}
+const PostImage = styled.div<IPostImage>`
   width: 340px;
   height: 260px;
   background: url('${({image}) => image}') center / cover no-repeat;
@@ -95,7 +99,7 @@ padding: 15px 20px;
   }
 `
 
-const Home = ({ data }) => (
+const Home = ({ data }: any): JSX.Element => (
     <Wrapper>
       <Head>
         <title>
@@ -112,7 +116,7 @@ const Home = ({ data }) => (
         </Link>
         <PostsWrapper>
           {
-            data.map((post, index) => <Link href={'/post/[id]'}
+            data.map((post: any, index: number) => <Link href={'/post/[id]'}
                                             as={`/post/${post._id}`}
                                             key={index}
                                             passHref>
@@ -132,17 +136,20 @@ const Home = ({ data }) => (
 
 export const getServerSideProps = async () => {
 
-  const res = await axios.get(`https://blog-app-server-2.herokuapp.com/api/1.0/posts`)
-  const data = await(res.data)
+  try {
+    const res = await axios.get(`https://blog-app-server-2.herokuapp.com/api/1.0/posts`)
+    const data = await(res.data)
 
-  if (!data) {
-    return {
-      notFound: true
+    if (!data) {
+      return {
+        notFound: true
+      }
     }
-  }
-
-  return {
-    props: { data }
+    return {
+      props: { data }
+    }
+  } catch (e) {
+    console.error(e)
   }
 }
 

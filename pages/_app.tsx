@@ -1,6 +1,7 @@
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { useEffect } from 'react'
 import Head from 'next/head'
+import type { AppProps } from 'next/app'
 
 const GlobalStyle = createGlobalStyle`
   html,
@@ -31,7 +32,7 @@ const theme = {
   }
 }
 
-const MyApp = ({ Component, pageProps }) => {
+const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
 
   useEffect(() => {
     if ('serviceWorker' in navigator) {
