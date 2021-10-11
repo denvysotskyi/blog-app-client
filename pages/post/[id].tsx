@@ -196,8 +196,8 @@ const Post = ({ post }: any): JSX.Element => {
         <Link href={'/'}
               passHref>
           <BackButton>
-            <Image src={'/assets/icons/left-arrow.svg'}
-                   alt={'left-arrow'}
+            <Image src={'/assets/icons/arrow.svg'}
+                   alt={'arrow'}
                    width={24}
                    height={15}
             />

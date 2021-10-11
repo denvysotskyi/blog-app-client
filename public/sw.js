@@ -1,8 +1,6 @@
 const staticCacheName = 'static-app-v1'
 
-const assetsUrl = [
-  '/src/index.tsx'
-]
+const assetsUrl = ['/']
 
 self.addEventListener('install', async e => {
   const cache = await caches.open(staticCacheName)

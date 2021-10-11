@@ -84,7 +84,7 @@ const PageNotFound = (): JSX.Element => (
         </BackButton>
       </Link>
       <ImageWrapper>
-        <Image src={'/assets/images/404.png'}
+        <Image src={'/assets/icons/404.png'}
                alt={'404_image'}
                width={390}
                height={290}
