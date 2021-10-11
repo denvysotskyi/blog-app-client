@@ -6,6 +6,8 @@ import Image from 'next/image'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
+import { GetServerSidePropsContext } from "next";
+import {ParsedUrlQuery} from "querystring";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -171,15 +173,15 @@ const Post = ({ post }: any): JSX.Element => {
   const router = useRouter()
   const [remove, setRemove] = useState(false)
 
-    useEffect(() => {
-      if (remove) {
-        axios.delete(`https://blog-app-server-2.herokuapp.com/api/1.0/posts/${post._id}`, { data: { id: post._id }})
-        router.push('/')
-      }
-    }, [remove, post._id, router])
+  useEffect(() => {
+    if (remove) {
+      axios.delete(`https://blog-app-server-2.herokuapp.com/api/1.0/posts/${post._id}`, { data: { id: post._id }})
+      router.push('/')
+    }
+  }, [remove, post._id, router])
 
   const removePost = () => {
-   setRemove(true)
+    setRemove(true)
   }
 
   return (
@@ -227,12 +229,15 @@ const Post = ({ post }: any): JSX.Element => {
   )
 }
 
-export const getServerSideProps = async (ctx: any) => {
-
-  const { id } = ctx.params
+export const getServerSideProps = async ({ params }: GetServerSidePropsContext<ParsedUrlQuery>) => {
+  if (!params) {
+    return {
+      notFound: true
+    }
+  }
 
   try {
-    const res = await axios.get(`https://blog-app-server-2.herokuapp.com/api/1.0/posts/${id}`)
+    const res = await axios.get(`https://blog-app-server-2.herokuapp.com/api/1.0/posts/${params.id}`)
     const post = await (res.data)
 
     if (!post) {

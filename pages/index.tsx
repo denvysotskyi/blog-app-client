@@ -99,6 +99,13 @@ padding: 15px 20px;
   }
 `
 
+interface IHomeProps {
+  _id: string
+  title: string
+  text: string
+  imageUrl: string
+}
+
 const Home = ({ data }: any): JSX.Element => (
     <Wrapper>
       <Head>
@@ -116,7 +123,7 @@ const Home = ({ data }: any): JSX.Element => (
         </Link>
         <PostsWrapper>
           {
-            data.map((post: any, index: number) => <Link href={'/post/[id]'}
+            data.map((post: IHomeProps, index: number) => <Link href={'/post/[id]'}
                                             as={`/post/${post._id}`}
                                             key={index}
                                             passHref>

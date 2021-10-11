@@ -35,7 +35,8 @@ const Navbar = (): JSX.Element => (
       <Container>
         <NavbarItem>
           <Link href={'/'}
-                passHref>
+                passHref
+          >
             <Logo>
               NEXT | BLOG
             </Logo>
