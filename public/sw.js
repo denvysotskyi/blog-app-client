@@ -1,7 +1,6 @@
 const staticCacheName = 'static-app-v1'
 
 const assetsUrl = [
-  'index.html',
   '/src/index.tsx'
 ]
 
