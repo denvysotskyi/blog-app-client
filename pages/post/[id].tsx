@@ -6,8 +6,8 @@ import Image from 'next/image'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
-import { GetServerSidePropsContext } from "next";
-import {ParsedUrlQuery} from "querystring";
+import { GetServerSidePropsContext } from "next"
+import { ParsedUrlQuery } from 'querystring'
 
 const Wrapper = styled.div`
   width: 100%;
