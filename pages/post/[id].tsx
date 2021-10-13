@@ -229,7 +229,7 @@ const Post = ({ post }: any): JSX.Element => {
   )
 }
 
-export const getServerSideProps = async ({ params }: GetServerSidePropsContext<ParsedUrlQuery>) => {
+export const getServerSideProps = async ({ params }: GetServerSidePropsContext<ParsedUrlQuery>): Promise<any> => {
   if (!params) {
     return {
       notFound: true

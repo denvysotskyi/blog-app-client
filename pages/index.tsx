@@ -123,17 +123,17 @@ const Home = ({ data }: any): JSX.Element => (
         </Link>
         <PostsWrapper>
           {
-            data.map((post: IHomeProps, index: number) => <Link href={'/post/[id]'}
-                                            as={`/post/${post._id}`}
-                                            key={index}
-                                            passHref>
-                                             <Post>
-                                               <PostImage image={post.imageUrl}/>
-                                               <PostTitle>
-                                                 {post.title}
-                                               </PostTitle>
-                                             </Post>
-                                     </Link>
+            data.map((post: IHomeProps, idx: number) => <Link href={'/post/[id]'}
+                                                              as={`/post/${post._id}`}
+                                                              key={idx}
+                                                              passHref>
+                                                                <Post>
+                                                                  <PostImage image={post.imageUrl}/>
+                                                                  <PostTitle>
+                                                                    {post.title}
+                                                                  </PostTitle>
+                                                                </Post>
+                                                        </Link>
             )
           }
         </PostsWrapper>
@@ -141,7 +141,7 @@ const Home = ({ data }: any): JSX.Element => (
     </Wrapper>
   )
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async (): Promise<any> => {
 
   try {
     const res = await axios.get(`https://blog-app-server-2.herokuapp.com/api/1.0/posts`)
